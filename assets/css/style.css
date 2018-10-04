@@ -24,13 +24,17 @@ h4, h5, h6 {
 
 #hangman-logo,
 #youwin-image,
-#gameover-image {
+#gameover-image,
+.wd-image {
     display: block;
     margin: 0 auto;
     width: 50%;
     height: auto;
 }
 
+
+
+}
 #currentWord {
     letter-spacing: 10px;
 }
@@ -38,7 +42,9 @@ h4, h5, h6 {
 /* Hide image display */
 #try-again,
 #youwin-image,
-#gameover-image {
+#gameover-image,
+.wd-image
+ {
     display: none;
 }
 
@@ -50,3 +56,4 @@ h4, h5, h6 {
     color: rgb(228, 205, 205);
     
 }
+

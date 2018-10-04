@@ -1,9 +1,11 @@
 // Word list //
 var selectWords = [
-    "simple song",
-    "mind on fire",
-    "people change",
-    "ready to love",
+    "frozen",
+    "sleeping beauty",
+    "cinderella",
+    "aladdin",
+    "beauty and the beast",
+    "the lion king",
 ];
 
 
@@ -19,12 +21,12 @@ var currentWord = document.getElementById("current-Word");
 var remainingGuess = document.getElementById("remaining-guess");
 var guessedText = document.getElementById("guessed-letter");
 
-// Maximum number of tries player has
-// const maxTries = 10;
+
+// PLAY SONGS
 function playsong() {
-    // play song 
 
 }
+
 // 
 var wins = 0;
 var guessingWord = []; // letters that have been properly guessed//
@@ -35,12 +37,29 @@ var gameStarted = false;
 var tryagain = false; // press any key to try again//
 var selectWordsNum = 0  
 
+// 
+document.body.onkeydown = function (event) {
+
+    var guessedLetter = event.key;
+    console.log(guessedLetter);
+
+    guessedLs.push(guessedLetter);
+    guessedText.innerText = guessedLs.join()
+    fillingLetter(guessedLetter)
+
+};
+
+// SET UP GAME
 function setup() {
+    // Math floor to round the random down to the nearest whole
     selectWordsNum = Math.floor(Math.random() * selectWords.length)
     totalWins.innerText = wins
     remainingGuess.innerText = remainingGuesses
     
-    
+    // Clear out arrays
+    guessedLs = []
+    guessingWord = []
+
     var arr = selectWords[selectWordsNum].split("")
     var newarr = arr.map(function (char) {
     
@@ -55,8 +74,10 @@ function setup() {
     })
     currentWord.innerText = newarr.join()
     
+    
 }
 
+// FILLING LETTERS
 function fillingLetter(L) {
     var arr = selectWords[selectWordsNum].split("")
     if (arr.includes(L)) {
@@ -85,10 +106,10 @@ function fillingLetter(L) {
 
     } else {
         remainingGuesses--
-        if (0==remainingGuesses) {
+        if (0 == remainingGuesses) {
             remainingGuesses = 11
             guessedLs = []
-            alert("you loss")
+            alert("YOU LOSE!! PRESS SPACEBAR TO STARTS AGAIN")
             setup()
             fillingLetter("")
         } else {
@@ -102,16 +123,6 @@ function fillingLetter(L) {
 setup()
 fillingLetter()
 
-// 
-document.body.onkeydown = function (event) {
 
-    var guessedLetter = event.key;
-    console.log(guessedLetter);
-
-    guessedLs.push(guessedLetter);
-    guessedText.innerText = guessedLs.join()
-    fillingLetter(guessedLetter)
-
-};
 
 
