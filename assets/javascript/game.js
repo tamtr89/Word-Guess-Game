@@ -1,11 +1,11 @@
 // Word list //
 var selectWords = [
     "frozen",
-    "sleeping beauty",
+    "sleeping-beauty",
     "cinderella",
     "aladdin",
-    "beauty and the beast",
-    "the lion king",
+    "beauty-and-the-beast",
+    "the-lion-king",
 ];
 
 
@@ -21,7 +21,6 @@ var currentWord = document.getElementById("current-Word");
 var remainingGuess = document.getElementById("remaining-guess");
 var guessedText = document.getElementById("guessed-letter");
 
-
 // PLAY SONGS
 function playsong() {
 
@@ -31,15 +30,17 @@ function playsong() {
 var wins = 0;
 var guessingWord = []; // letters that have been properly guessed//
 var guessedLs = []; // letters that have already guessed//
-var remainingGuesses = 11; // the value of maxTries (-1 for every wrong guessed)//
-var currentWordIndex = []; // randomly selected word//
-var gameStarted = false;
-var tryagain = false; // press any key to try again//
-var selectWordsNum = 0  
+var remainingGuesses = 12; // the value of maxTries (-1 for every wrong guessed)//
+var Endgame = false;
+var img;
+var selectWordsNum = 0
 
 // 
 document.body.onkeydown = function (event) {
-
+    if (Endgame) {
+        img.style.display = "none"
+        Endgame = false
+    }
     var guessedLetter = event.key;
     console.log(guessedLetter);
 
@@ -55,26 +56,26 @@ function setup() {
     selectWordsNum = Math.floor(Math.random() * selectWords.length)
     totalWins.innerText = wins
     remainingGuess.innerText = remainingGuesses
-    
+
     // Clear out arrays
     guessedLs = []
     guessingWord = []
 
     var arr = selectWords[selectWordsNum].split("")
+
     var newarr = arr.map(function (char) {
-    
+
         if (guessedLs.includes(char)) {
             return char
-    
-        } else if (char == " ") {
-            return " "
+
+        } else if (char == "-") {
+            return "-"
         } else {
             return "_"
         }
     })
+
     currentWord.innerText = newarr.join()
-    
-    
 }
 
 // FILLING LETTERS
@@ -86,28 +87,33 @@ function fillingLetter(L) {
             if (guessedLs.includes(char)) {
                 return char
 
-            } else if (char == " ") {
-                return " "
+            } else if (char == "-") {
+                return "-"
             } else {
                 return "_"
             }
         })
         if (arr.join() == newarr.join()) {
+            Endgame = true
+            img = document.getElementById(selectWords[selectWordsNum])
+            img.style.display = "inline"
             wins++
             totalWins.innerText = wins
-            remainingGuesses = 11
+            remainingGuesses = 12
             guessedLs = []
             remainingGuess.innerText = remainingGuesses
             setup()
-            fillingLetter("") 
-            playsong()
+            fillingLetter("")
+
         }
-        currentWord.innerText = newarr.join()
+        if (!Endgame) {
+            currentWord.innerText = newarr.join()
+        }
 
     } else {
         remainingGuesses--
-        if (0 == remainingGuesses) {
-            remainingGuesses = 11
+        if (remainingGuesses === 0) {
+            remainingGuesses = 12
             guessedLs = []
             alert("YOU LOSE!! PRESS SPACEBAR TO STARTS AGAIN")
             setup()

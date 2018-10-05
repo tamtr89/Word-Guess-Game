@@ -1,59 +1,102 @@
+/* Common Area */
 body {
     background: url("../images/background90s.jpg");
+    z-index: -100;
     padding-top: 20px;
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
 
-#hangman-logo {
-    padding: 5px;    
-}
-
-.container {
+.container,
+#main-container {
     text-align: center;
-    
+    width: 100%;
 }
 
+#main-container {
+    width: 100%;
+    margin: 5px 10px 5px 10px;
+}
+
+/* Second-col */
 h1, h2, h3,
 h4, h5, h6 {
-    padding: 5px;
+    font-family: 'Patrick Hand SC', cursive;
+    padding: 9px;
     background-color: rgba(53, 13, 13, 0.479);
     color: rgb(56, 211, 211);
+    font-size: 1.5rem; 
+    text-align: center;
 }
 
+/* Hangman Title - Disney Theme */
 #hangman-logo,
-#youwin-image,
-#gameover-image,
-.wd-image {
+#disney-logo {
+    margin-bottom: 9px;
+}
+
+#hangman-logo {
     display: block;
-    margin: 0 auto;
-    width: 50%;
-    height: auto;
+    width: 38%;
+    position: absolute;
+    margin-top: 28px;
+    margin-left: 100px;
+}
+
+#disney-logo {
+    z-index: -25;
+    position: relative;
+    width: 25%;
+    opacity: 0.5;
+    float: right;
+    margin-top: -13px;
+}
+
+#disney,
+h2 {
+    font-family: 'Montez', cursive;
+    font-size: 2.2rem; 
+    font-weight: bold;
+}
+
+.head {
+    margin-top: 10px;
 }
 
 
-
+/* Demo image for Win guessed */
+#demo {
+    width: 70%;
 }
-#currentWord {
-    letter-spacing: 10px;
-}
-
-/* Hide image display */
-#try-again,
-#youwin-image,
-#gameover-image,
-.wd-image
- {
+.wd-image{
     display: none;
+    width: 70%;
 }
 
+/* Border Box */
 .gameplay-column {
     padding-top: 20px;
     border: 3px dashed white;
     text-align: center;
     background-color: rgba(3, 51, 3, 0.39);
-    color: rgb(228, 205, 205);
-    
+    color: rgb(228, 205, 205);   
 }
+
+/* Footer */
+footer {
+    background-color: rgba(53, 13, 13, 0.479);
+    color: rgb(56, 211, 211);
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    z-index: -100;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+    
+
 
