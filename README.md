@@ -21,3 +21,4 @@
  <li>JavaScript
    
    <h4>Demo:</h4>
+https://tamtr89.github.io/Word-Guess-Game/
